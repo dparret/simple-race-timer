@@ -4,12 +4,14 @@ import React, { useEffect, useState }  from 'react';
 import { intervalToDuration, startOfToday } from "date-fns";
 import { CSVLink } from "react-csv";
 import { formatClock, formatTimer, isRaceFieldValid, place } from './utils';
-import { ClockIcon } from '@heroicons/react/16/solid';
+import { ClockIcon, Cog6ToothIcon } from '@heroicons/react/16/solid';
+import Link from 'next/link';
+import Footer from './components/Footer';
 
 const DEFAULT_TIME = "00:00:00"
 const DEFAULT_ELAPSED_TIME = "00:00"
 
-export default function Timer() {
+const Timer: React.FC = () => {
   // States
   const [clock, setClock] = useState(DEFAULT_TIME);
   const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
@@ -67,7 +69,7 @@ export default function Timer() {
   }
   
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_24px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center">
 
         {/* Clock and Timer */}
@@ -92,6 +94,9 @@ export default function Timer() {
             <button className="bg-red-500 disabled:bg-gray-400 hover:bg-red-600 text-white py-2 px-4 rounded-md" onClick={() => reset()} disabled={startTime === 0}>
               Reset
             </button>
+            <Link className="w-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800" href="/settings">
+              <Cog6ToothIcon className="size-4 text-white" />
+            </Link>
           </div>
 
           {/* Recording of race numbers and times */}
@@ -145,9 +150,9 @@ export default function Timer() {
         </div>
 
       </main>
-      <footer className="text-neutral-500 row-start-3 flex gap-1 flex-wrap items-center justify-center">
-        <a className="hover:underline" href='https://github.com/dparret/simple-race-timer'>Source code available on GitHub</a>
-      </footer>
+      <Footer />
     </div>
   );
 }
+
+export default Timer;
