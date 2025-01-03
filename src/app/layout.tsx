@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Simple Race Timer",
-  description: "A very simple race timer.",
+  description: "A truly simple race timer. Used to manually time small races using athlete's numbers.",
 };
 
 export default function RootLayout({

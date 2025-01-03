@@ -4,6 +4,7 @@ import React, { useEffect, useState }  from 'react';
 import { intervalToDuration, startOfToday } from "date-fns";
 import { CSVLink } from "react-csv";
 import { formatClock, formatTimer, isRaceFieldValid, place } from './utils';
+import { ClockIcon } from '@heroicons/react/16/solid';
 
 const DEFAULT_TIME = "00:00:00"
 const DEFAULT_ELAPSED_TIME = "00:00"
@@ -72,7 +73,10 @@ export default function Timer() {
         {/* Clock and Timer */}
         <div className="flex flex-col gap-2 items-center">
           <div className='text-xl text-neutral-500 font-mono'>
+            <div className='flex flex-row gap-2 items-center'>
+            <ClockIcon className="size-4 text-neutral-500" />
             {clock}
+            </div>
           </div>
           <div className='text-3xl font-mono'>
             {elapsedTime}
@@ -141,8 +145,8 @@ export default function Timer() {
         </div>
 
       </main>
-      <footer className="text-neutral-500 row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        Source code available in GitHub
+      <footer className="text-neutral-500 row-start-3 flex gap-1 flex-wrap items-center justify-center">
+        <a className="hover:underline" href='https://github.com/dparret/simple-race-timer'>Source code available on GitHub</a>
       </footer>
     </div>
   );
