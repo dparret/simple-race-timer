@@ -12,8 +12,8 @@ export default function Timer() {
   // States
   const [clock, setClock] = useState(DEFAULT_TIME);
   const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
-  const [startTime, setStartTime] = useState<number>(localStorage.startTime ? Number(localStorage.startTime) : 0);
-  const [places, setPlaces] = useState<place[]>(localStorage.places ? JSON.parse(localStorage.places) : [])
+  const [startTime, setStartTime] = useState<number>(global?.window?.localStorage?.startTime ? Number(localStorage.startTime) : 0);
+  const [places, setPlaces] = useState<place[]>(global?.window?.localStorage?.places ? JSON.parse(localStorage.places) : [])
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
