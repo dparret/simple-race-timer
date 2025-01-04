@@ -17,7 +17,8 @@ const Timer: React.FC = () => {
   const [clock, setClock] = useState(DEFAULT_TIME);
   const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(true);
+ 
   // Values using local storage
   const [startTime, setStartTime] = useLocalStorage('startTime', STARTTIME_DEFAULT, { initializeWithValue: false });
   const [places, setPlaces] = useLocalStorage<place[]>('places', PLACES_DEFAULT, { initializeWithValue: false });
@@ -41,9 +42,14 @@ const Timer: React.FC = () => {
     }
   }, [startTime]);
 
+  useEffect(() => {
+    if (clock !== DEFAULT_TIME)
+      setIsLoading(false)
+  }, [clock])
   
   return (
     <div className="grid grid-rows-[20px_1fr_24px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      {!isLoading && 
       <main className="flex flex-col gap-8 row-start-2 items-center w-full">
         <ClockAndTimer elapsedTime={elapsedTime} clock={clock} />
         {isSettingsOpen ?
@@ -61,6 +67,7 @@ const Timer: React.FC = () => {
         </>
         }
       </main>
+      }
       <Footer />
     </div>
   );
