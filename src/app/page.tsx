@@ -8,7 +8,7 @@ import ClockAndTimer from './components/ClockAndTimer';
 import Record from './components/Record';
 import Results from './components/Results';
 import Start from './components/Start';
-import { DEFAULT_ELAPSED_TIME, DEFAULT_TIME, PLACES_DEFAULT, STARTTIME_DEFAULT } from './constants';
+import { DEFAULT_ELAPSED_TIME, DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_TIME, DEFAULT_PLACES, DEFAULT_STARTTIME } from './constants';
 import { formatClock, formatTimer, place, settings } from './utils';
 import Settings from './components/Settings';
 
@@ -20,9 +20,9 @@ const Timer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
  
   // Values using local storage
-  const [startTime, setStartTime] = useLocalStorage('startTime', STARTTIME_DEFAULT, { initializeWithValue: false });
-  const [places, setPlaces] = useLocalStorage<place[]>('places', PLACES_DEFAULT, { initializeWithValue: false });
-  const [settings, setSettings]= useLocalStorage<settings>('settings', {min: 1, max: 1000}, { initializeWithValue: true })
+  const [startTime, setStartTime] = useLocalStorage('startTime', DEFAULT_STARTTIME, { initializeWithValue: false });
+  const [places, setPlaces] = useLocalStorage<place[]>('places', DEFAULT_PLACES, { initializeWithValue: false });
+  const [settings, setSettings]= useLocalStorage<settings>('settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true })
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
