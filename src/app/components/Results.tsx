@@ -7,7 +7,7 @@ interface ResultsProps {
 }
 
 const Results: React.FC<ResultsProps> = ({ places }) => 
-  <div className="flex flex-col gap-8 items-center">
+  <div className="flex flex-col gap-4 items-center">
     <div className="flex flex-col gap-0">
       {places.map(({position, raceNumber, time}) =>
       <div className="grid grid-cols-3 gap-2" key={`parent-${raceNumber}`}>

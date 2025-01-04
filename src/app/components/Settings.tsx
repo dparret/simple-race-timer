@@ -24,10 +24,10 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
   }
 
   return (
-    <div className="flex flex-col gap-4 items-center">
-      <div className="flex flex-row gap-2 items-center">
+    <div className="flex flex-col gap-8 items-center w-1/2">
+      <div className="flex flex-row justify-end w-full">
         <button 
-          className="w-10 h-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800"
+          className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
           onClick={() => setIsSettingsOpen(false)}
         >
           <XMarkIcon className="size-4 text-white" />
@@ -41,13 +41,13 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
           <input 
             type="number"
             id="min-race-number"
-            className="bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-max h-10 p-2.5 placeholder-gray-400"
+            className="grow bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
             placeholder="The minimum race number"
             value={settings.min} 
             onChange={(value) => setSettings({min: Number(value.currentTarget.value), max: settings.max})}
           />
           <button 
-            className="w-10 h-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800"
+            className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
             onClick={() => setSettings({min: DEFAULT_SETTING_MIN, max: settings.max})}
           >
             <ArrowUturnLeftIcon className="size-4 text-white" />
@@ -62,13 +62,13 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
           <input 
             type="number"
             id="max-race-number"
-            className="bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-max h-10 p-2.5 placeholder-gray-400"
+            className="grow bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
             placeholder="The maximum race number"
             value={settings.max}
             onChange={(value) => setSettings({min: settings.min, max: Number(value.currentTarget.value)})}
           />
           <button 
-            className="w-10 h-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800"
+            className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
             onClick={() => setSettings({min: settings.min, max: DEFAULT_SETTING_MAX})}
           >
             <ArrowUturnLeftIcon className="size-4 text-white" />

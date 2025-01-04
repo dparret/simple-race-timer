@@ -26,22 +26,22 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, setIsSet
   }
 
   return (
-    <div className="flex flex-row gap-2" >
+    <div className="flex flex-row gap-2 w-full" >
       <input 
         type="number"
         id="number"
-        className="bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-max h-10 p-2.5 placeholder-gray-400"
+        className="grow text-white text-sm bg-gray-700 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
         placeholder={`Race number (${settings.min}-${settings.max})`}
       />
       <button 
         type="button" 
-        className="bg-green-600 disabled:bg-gray-400 hover:bg-green-700 text-white py-2 px-4 rounded-md" 
+        className="text-white py-2 px-4 rounded-md bg-green-600 disabled:bg-gray-400 hover:bg-green-700" 
         onClick={() => saveRaceNumber()}
       >
       Record
       </button>
       <button 
-        className="w-10 h-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800"
+        className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
         onClick={() => setIsSettingsOpen(true)}
       >
         <Cog6ToothIcon className="size-4 text-white" />
