@@ -10,11 +10,13 @@ import Results from './components/Results';
 import Start from './components/Start';
 import { DEFAULT_ELAPSED_TIME, DEFAULT_TIME, PLACES_DEFAULT, STARTTIME_DEFAULT } from './constants';
 import { formatClock, formatTimer, place } from './utils';
+import Settings from './components/Settings';
 
 const Timer: React.FC = () => {
   // States
   const [clock, setClock] = useState(DEFAULT_TIME);
   const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
+  const [isSettingsOpen, setIsSettingsOpen]  =useState(false);
 
   // Values using local storage
   const [startTime, setStartTime] = useLocalStorage('startTime', STARTTIME_DEFAULT, { initializeWithValue: false });
@@ -44,13 +46,17 @@ const Timer: React.FC = () => {
       <main className="flex flex-col gap-8 row-start-2 items-center">
 
         <ClockAndTimer elapsedTime={elapsedTime} clock={clock} />
-        
+        {isSettingsOpen ?
+        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen}/>
+        :
+        <>
         <div className="flex flex-col gap-4 items-center">
-          <Start setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} />
+          <Start setStartTime={setStartTime} setIsSettingsOpen={setIsSettingsOpen} />
           <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} />
         </div>
-
         <Results places={places} />
+        </>
+        }
       </main>
       <Footer />
     </div>
