@@ -1,13 +1,15 @@
 import React, { SetStateAction } from 'react';
 import { isRaceFieldValid, place } from '../utils';
+import { Cog6ToothIcon } from '@heroicons/react/16/solid';
 
 interface RecordProps {
     elapsedTime: string,
     places: place[],
-    setPlaces: React.Dispatch<SetStateAction<place[]>>
+    setPlaces: React.Dispatch<SetStateAction<place[]>>,
+    setIsSettingsOpen: React.Dispatch<SetStateAction<boolean>>
 }
 
-const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces}) => {
+const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, setIsSettingsOpen}) => {
       // To record a new number and its time
   const recordNumber = (raceField: HTMLFormElement) => {
     const updatedPlaces = [...places, {position: places.length + 1, raceNumber: raceField.value, time: elapsedTime}]
@@ -27,7 +29,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces}) => {
       <input 
         type="number" 
         id="number" 
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+        className="bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-max h-10 p-2.5 placeholder-gray-400"
         placeholder="The athlete's number" 
         />
       <button 
@@ -36,6 +38,12 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces}) => {
         onClick={() => saveRaceNumber()}
         > 
       Record
+      </button>
+      <button 
+        className="w-10 h-10 rounded-md flex items-center justify-center transition-all hover:bg-neutral-800"
+        onClick={() => setIsSettingsOpen(true)}
+      >
+        <Cog6ToothIcon className="size-4 text-white" />
       </button>
     </div>
   );

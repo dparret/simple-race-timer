@@ -17,13 +17,14 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
       setStartTime(STARTTIME_DEFAULT);
       setElapsedTime(DEFAULT_ELAPSED_TIME);
       setPlaces(PLACES_DEFAULT);
+      setIsSettingsOpen(false);
     }
   }
 
   return (
     <div className="flex flex-col gap-4 items-center">
       <div className="flex flex-row gap-2 items-center">
-        <div className='text-xl font-mono'>
+        <div className='text-s w-40 text-center'>
         Settings
         </div>
         <button 
