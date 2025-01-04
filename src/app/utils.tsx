@@ -9,17 +9,21 @@ const padZero = (value?: number) => {
 export const formatClock = (hours?: number, minutes?: number, seconds?: number) => `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`
 export const formatTimer = (hours?: number, minutes?: number, seconds?: number) => `${(hours === undefined || hours === 0) ? "" : hours + ":"}${padZero(minutes)}:${padZero(seconds)}`
 
-
 export interface place {
     position: number,
     raceNumber: number,
     time: string
   }
 
-export const isRaceFieldValid = (raceField: HTMLFormElement, places: place[]) => {
+export interface settings {
+    min: number,
+    max: number
+  }
+
+export const isRaceFieldValid = (raceField: HTMLFormElement, places: place[], settings: settings) => {
   // Check for invalid race numbers
-  if (raceField.value < 1) {
-    alert("Race number not valid!")
+  if (raceField.value < settings.min || raceField.value > settings.max) {
+    alert("Race number not in the valid range!")
     return false
   }
   if (places.map((p) => p.raceNumber).includes(raceField.value)) {
