@@ -2,22 +2,27 @@
 
 import React, { useEffect, useState }  from 'react';
 import { intervalToDuration, startOfToday } from "date-fns";
-import { formatClock, formatTimer, place } from './utils';
+import { useLocalStorage } from 'usehooks-ts';
 import Footer from './components/Footer';
 import ClockAndTimer from './components/ClockAndTimer';
 import Record from './components/Record';
 import Results from './components/Results';
 import Start from './components/Start';
+import { formatClock, formatTimer, place } from './utils';
 
 const DEFAULT_TIME = "00:00:00"
 export const DEFAULT_ELAPSED_TIME = "00:00"
+export const STARTTIME_DEFAULT = 0
+export const PLACES_DEFAULT: place[] = []
 
 const Timer: React.FC = () => {
   // States
   const [clock, setClock] = useState(DEFAULT_TIME);
   const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
-  const [startTime, setStartTime] = useState<number>(global?.window?.localStorage?.startTime ? Number(localStorage.startTime) : 0);
-  const [places, setPlaces] = useState<place[]>(global?.window?.localStorage?.places ? JSON.parse(localStorage.places) : [])
+
+  // Values using local storage
+  const [startTime, setStartTime] = useLocalStorage('startTime', STARTTIME_DEFAULT, { initializeWithValue: false });
+  const [places, setPlaces] = useLocalStorage<place[]>('places', PLACES_DEFAULT, { initializeWithValue: false });
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
