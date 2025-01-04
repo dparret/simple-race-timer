@@ -1,6 +1,6 @@
 import React, { SetStateAction } from 'react';
+import { DEFAULT_ELAPSED_TIME, PLACES_DEFAULT, STARTTIME_DEFAULT } from '../constants';
 import { place } from '../utils';
-import { DEFAULT_ELAPSED_TIME, PLACES_DEFAULT, STARTTIME_DEFAULT } from '../page';
 
 interface StartProps {
     setStartTime: React.Dispatch<SetStateAction<number>>,

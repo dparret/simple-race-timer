@@ -8,12 +8,8 @@ import ClockAndTimer from './components/ClockAndTimer';
 import Record from './components/Record';
 import Results from './components/Results';
 import Start from './components/Start';
+import { DEFAULT_ELAPSED_TIME, DEFAULT_TIME, PLACES_DEFAULT, STARTTIME_DEFAULT } from './constants';
 import { formatClock, formatTimer, place } from './utils';
-
-const DEFAULT_TIME = "00:00:00"
-export const DEFAULT_ELAPSED_TIME = "00:00"
-export const STARTTIME_DEFAULT = 0
-export const PLACES_DEFAULT: place[] = []
 
 const Timer: React.FC = () => {
   // States
