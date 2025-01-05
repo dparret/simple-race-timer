@@ -1,7 +1,7 @@
 # Simple Race Timer
 
 This is a truly minimal timer to manually time any small races. 
-It's built to survive page refresh, but nothing more.
+It's built to survive page refresh and can work off line (if not refreshed), but nothing more.
 
 It's also built to be mobile friendly.
 
@@ -11,11 +11,21 @@ Have a good race!
 
 ## Overview and Features
 
-The clock let you hit the start button at the right time, and then the timer goes live!
-Then, on the finish line, it's only about providing the athlete's race number and record the time.
+The starting page displays a clock to let you hit the start button at the right time.
+![The starting page](images/home.png)
 
-The reset button is hidden in the settings to avoid missclicks. It will also ask for confirmation.
-Also, min and max race numbers can be set to prevent mistakes, if, for example, athlete's race number are only between 100 and 199.
+At that moment, the timer goes live! 
+Then, on the finish line, it's only about providing the athlete's race number and record the time when crossing the finish line.
+![Saving times with race numbers](images/record.png)
+
+The results can be downloaded at any time in a csv format.
+![Seeing all results](images/results.png)
+
+The recording doesn't provide any editing capabilities (yet), but will prevent having invalid or duplicated numbers. 
+Also, the available race number range can be set in the settings.
+![Settings](images/settings.png)
+
+The reset of the timer can also be done in the settings and will go through a confirmation.
 
 ## Running it locally
 
