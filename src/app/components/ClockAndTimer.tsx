@@ -17,6 +17,7 @@ const ClockAndTimer: React.FC<ClockAndTimerProps> = ({clock, elapsedTime, isSett
         </div>
       </div>
       <div className="flex flex-row gap-2">
+        <div className="w-10 h-10"></div> {/* This is only to center the timer */}
         <div className='text-3xl font-mono'>
           {elapsedTime}
         </div>
