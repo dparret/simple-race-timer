@@ -1,16 +1,14 @@
 import React, { SetStateAction } from 'react';
 import { isRaceFieldValid, place, settings } from '../utils';
-import { Cog6ToothIcon } from '@heroicons/react/16/solid';
 
 interface RecordProps {
     elapsedTime: string,
     places: place[],
     setPlaces: React.Dispatch<SetStateAction<place[]>>,
-    setIsSettingsOpen: React.Dispatch<SetStateAction<boolean>>,
     settings: settings
 }
 
-const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, setIsSettingsOpen, settings}) => {
+const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings}) => {
       // To record a new number and its time
   const recordNumber = (raceField: HTMLFormElement) => {
     const updatedPlaces = [...places, {position: places.length + 1, raceNumber: raceField.value, time: elapsedTime}]
@@ -39,12 +37,6 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, setIsSet
         onClick={() => saveRaceNumber()}
       >
       Record
-      </button>
-      <button 
-        className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
-        onClick={() => setIsSettingsOpen(true)}
-      >
-        <Cog6ToothIcon className="size-4 text-white" />
       </button>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { SetStateAction } from 'react';
 import { place, settings } from '../utils';
 import { DEFAULT_ELAPSED_TIME, DEFAULT_PLACES, DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_STARTTIME } from '../constants';
-import { ArrowUturnLeftIcon, XMarkIcon } from '@heroicons/react/16/solid';
+import { ArrowUturnLeftIcon } from '@heroicons/react/16/solid';
 
 interface SettingsProps {
   setStartTime: React.Dispatch<SetStateAction<number>>,
@@ -25,14 +25,6 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
 
   return (
     <div className="flex flex-col gap-8 items-center w-1/2">
-      <div className="flex flex-row justify-end w-full">
-        <button 
-          className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
-          onClick={() => setIsSettingsOpen(false)}
-        >
-          <XMarkIcon className="size-4 text-white" />
-        </button>
-      </div>
       <div className="flex flex-col gap-1 w-full">
         <label className="text-sm">
         Race Number Minimum

@@ -51,16 +51,16 @@ const Timer: React.FC = () => {
     <div className="grid grid-rows-[20px_1fr_24px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {!isLoading && 
       <main className="flex flex-col gap-8 row-start-2 items-center w-full">
-        <ClockAndTimer elapsedTime={elapsedTime} clock={clock} />
+        <ClockAndTimer elapsedTime={elapsedTime} clock={clock} isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen}/>
         {isSettingsOpen ?
         <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings}/>
         :
         <>
           <div className="flex flex-col gap-4 items-center w-full justify-items-center">
             {startTime === 0 ?
-            <Start setStartTime={setStartTime} setIsSettingsOpen={setIsSettingsOpen} />
+            <Start setStartTime={setStartTime} />
             :
-            <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings}/>
+            <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} settings={settings}/>
             }
           </div>
           <Results places={places} />
