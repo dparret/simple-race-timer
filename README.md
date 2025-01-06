@@ -15,7 +15,8 @@ The starting page displays a clock to let you hit the start button at the right 
 ![The starting page](images/home.png)
 
 At that moment, the timer goes live! 
-Then, on the finish line, it's only about providing the athlete's race number and record the time when crossing the finish line.
+Then, on the finish line, it's only about providing the athlete's race number and record the time when crossing the finish line. 
+For groups arriving to the finish line, the "same time" feature will let all race numbers have the same time (the order matter tho).
 ![Saving times with race numbers](images/record.png)
 
 The results can be downloaded at any time in a csv format.
