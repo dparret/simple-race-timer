@@ -27,7 +27,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
   }
 
   return (
-    <div className="flex flex-col gap-2 w-full" >
+    <div className="flex flex-col gap-2 w-full large:max-w-lg" >
       <input 
         type="number"
         id="number"
@@ -37,7 +37,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
       <div className="flex flex-row gap-2 w-full" >
         <button 
           type="button" 
-          className="grow text-white py-2 px-4 rounded-md bg-green-800 disabled:bg-gray-500 hover:bg-green-700" 
+          className="w-1/2 text-white py-2 px-4 rounded-md bg-green-800 disabled:bg-gray-500 hover:bg-green-700" 
           onClick={() => saveRaceNumber(true)}
           disabled={places.length === 0}
         >
@@ -45,7 +45,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
         </button>
         <button 
           type="button" 
-          className="grow text-white py-2 px-4 rounded-md bg-green-600 disabled:bg-gray-500 hover:bg-green-700" 
+          className="w-1/2 text-white py-2 px-4 rounded-md bg-green-600 disabled:bg-gray-500 hover:bg-green-700" 
           onClick={() => saveRaceNumber(false)}
         >
         Record

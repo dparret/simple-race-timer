@@ -24,7 +24,7 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
   }
 
   return (
-    <div className="flex flex-col gap-8 items-center w-1/2">
+    <div className="flex flex-col gap-8 items-center small:w-full large:w-1/2 large:max-w-96">
       <div className="flex flex-col gap-1 w-full">
         <label className="text-sm">
         Race Number Minimum
@@ -33,7 +33,7 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
           <input 
             type="number"
             id="min-race-number"
-            className="grow bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
+            className="grow w-10 bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
             placeholder="The minimum race number"
             value={settings.min} 
             onChange={(value) => setSettings({min: Number(value.currentTarget.value), max: settings.max})}
@@ -54,7 +54,7 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
           <input 
             type="number"
             id="max-race-number"
-            className="grow bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
+            className="grow w-10 bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
             placeholder="The maximum race number"
             value={settings.max}
             onChange={(value) => setSettings({min: settings.min, max: Number(value.currentTarget.value)})}
