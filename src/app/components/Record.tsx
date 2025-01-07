@@ -31,6 +31,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
       <input 
         type="number"
         id="number"
+        pattern="[0-9]*"
         className="grow text-white text-sm bg-gray-700 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
         placeholder={`Race number (${settings.min}-${settings.max})`}
       />
