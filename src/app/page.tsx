@@ -22,7 +22,8 @@ const Timer: React.FC = () => {
   // Values using local storage
   const [startTime, setStartTime] = useLocalStorage('startTime', DEFAULT_STARTTIME, { initializeWithValue: false });
   const [places, setPlaces] = useLocalStorage<place[]>('places', DEFAULT_PLACES, { initializeWithValue: false });
-  const [settings, setSettings]= useLocalStorage<settings>('settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true })
+  const [settings, setSettings]= useLocalStorage<settings>('settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true });
+  const [notes, setNotes]= useLocalStorage<string>('notes', '', { initializeWithValue: true });
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
@@ -53,7 +54,7 @@ const Timer: React.FC = () => {
       <main className="flex flex-col gap-8 row-start-2 items-center w-full">
         <ClockAndTimer elapsedTime={elapsedTime} clock={clock} isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen}/>
         {isSettingsOpen ?
-        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings}/>
+        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings} setNotes={setNotes} />
         :
         <>
           <div className="flex flex-col gap-4 items-center w-full justify-items-center">
@@ -63,7 +64,7 @@ const Timer: React.FC = () => {
             <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} settings={settings}/>
             }
           </div>
-          <Results places={places} />
+          <Results places={places} notes={notes} setNotes={setNotes}/>
         </>
         }
       </main>

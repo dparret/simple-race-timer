@@ -9,10 +9,11 @@ interface SettingsProps {
   setPlaces: React.Dispatch<SetStateAction<place[]>>,
   setIsSettingsOpen: React.Dispatch<SetStateAction<boolean>>,
   settings: settings,
-  setSettings: React.Dispatch<SetStateAction<settings>>
+  setSettings: React.Dispatch<SetStateAction<settings>>,
+  setNotes: React.Dispatch<SetStateAction<string>>,
 }
 
-const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPlaces, setIsSettingsOpen, settings, setSettings}) => {
+const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPlaces, setIsSettingsOpen, settings, setSettings, setNotes}) => {
   // To reset the stopwatch.
   const reset = () => {
     if (confirm("Clear all results and reset timer?")) {
@@ -20,6 +21,7 @@ const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPla
       setElapsedTime(DEFAULT_ELAPSED_TIME);
       setPlaces(DEFAULT_PLACES);
       setIsSettingsOpen(false);
+      setNotes('')
     }
   }
 
