@@ -3,6 +3,7 @@ import { place } from '../utils';
 import { CSVLink } from 'react-csv';
 import { PencilSquareIcon } from '@heroicons/react/16/solid';
 import Notes from './Notes';
+import { format } from 'date-fns';
 
 interface ResultsProps {
   places: place[],
@@ -43,7 +44,7 @@ const Results: React.FC<ResultsProps> = ({ places, notes, setNotes }) => {
           <>
             <CSVLink
               className="bg-blue-500 disabled:bg-gray-400 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
-              filename="race_results.csv" 
+              filename={`race-results-${format(Date.now(), 'dd-MMMM-yyyy').toLowerCase()}.csv`}
               data={csvData}
             > 
               Download Results
