@@ -37,16 +37,13 @@ const Timer: React.FC = () => {
         const stopwatch = intervalToDuration({start: Number(startTime), end: Date.now()});
         setElapsedTime(formatTimer(stopwatch.hours, stopwatch.minutes, stopwatch.seconds));
       }
+
+      setIsLoading(false);
     }, 100);
     return () => {
       clearInterval(timer); // Return a funtion to clear the timer so that it will stop being called on unmount
     }
   }, [startTime]);
-
-  useEffect(() => {
-    if (clock !== DEFAULT_TIME)
-      setIsLoading(false)
-  }, [clock])
   
   return (
     <div className="grid grid-rows-[20px_1fr_24px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
