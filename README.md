@@ -22,11 +22,12 @@ For groups arriving to the finish line, the "same time" feature will let all rac
 The results can be downloaded at any time in a csv format.
 ![Seeing all results](images/results.png)
 
-The recording doesn't provide any editing capabilities (yet), but will prevent having invalid or duplicated numbers. 
-Also, the available race number range can be set in the settings.
-![Settings](images/settings.png)
+As the recording doesn't provide any editing capabilities to avoid messing up with stuff, it was done to prevent the obvious and will prevent having invalid or duplicated numbers.
+Also, notes can be taken if needed, to write DNF or any other mistakes.
+![Notes](images/notes.png)
 
-The reset of the timer can also be done in the settings and will go through a confirmation.
+Also, the available race number range can be set in the settings. The reset of the timer can also be done in the settings and will go through a confirmation.
+![Settings](images/settings.png)
 
 ## Running it locally
 
