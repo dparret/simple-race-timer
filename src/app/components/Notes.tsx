@@ -7,9 +7,8 @@ interface NotesProps {
   setNotes: React.Dispatch<SetStateAction<string>>
 }
 
-const Notes: React.FC<NotesProps> = ({setIsNotesOpen, notes, setNotes}) => {
-  return (
-    <div className="flex flex-row gap-2 small:w-full large:w-1/2 large:max-w-96">
+const Notes: React.FC<NotesProps> = ({setIsNotesOpen, notes, setNotes}) =>
+  <div className="flex flex-row gap-2 small:w-full large:w-1/2 large:max-w-96">
     <input 
       id="notes"
       className="grow bg-gray-700 border border-gray-600 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
@@ -24,7 +23,5 @@ const Notes: React.FC<NotesProps> = ({setIsNotesOpen, notes, setNotes}) => {
       <ArrowUturnLeftIcon className="size-4 text-white" />
     </button>
   </div>
-  );
-}
 
 export default Notes;

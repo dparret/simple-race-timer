@@ -20,10 +20,10 @@ const Timer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
  
   // Values using local storage
-  const [startTime, setStartTime] = useLocalStorage('startTime', DEFAULT_STARTTIME, { initializeWithValue: false });
-  const [places, setPlaces] = useLocalStorage<place[]>('places', DEFAULT_PLACES, { initializeWithValue: false });
-  const [settings, setSettings]= useLocalStorage<settings>('settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true });
-  const [notes, setNotes]= useLocalStorage<string>('notes', '', { initializeWithValue: true });
+  const [startTime, setStartTime] = useLocalStorage('SRT-startTime', DEFAULT_STARTTIME, { initializeWithValue: false });
+  const [places, setPlaces] = useLocalStorage<place[]>('SRT-places', DEFAULT_PLACES, { initializeWithValue: false });
+  const [settings, setSettings]= useLocalStorage<settings>('SRT-settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true });
+  const [notes, setNotes]= useLocalStorage<string>('SRT-notes', '', { initializeWithValue: true });
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
