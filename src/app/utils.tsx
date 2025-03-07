@@ -43,3 +43,9 @@ export const isRaceFieldPresent = (raceField: number, places: place[]) => {
     return true
   }
 };
+
+// Use to check if a field is empty or not
+export const isFieldEmpty = (key: string) => {
+  const field = document.getElementById(key) as HTMLFormElement;
+  return field === null || field.value === "" ? true : false
+}

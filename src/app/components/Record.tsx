@@ -1,5 +1,5 @@
 import React, { SetStateAction } from 'react';
-import { isRaceFieldValid, place, settings } from '../utils';
+import { isFieldEmpty, isRaceFieldValid, place, settings } from '../utils';
 
 interface RecordProps {
     elapsedTime: string,
@@ -40,7 +40,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
           type="button" 
           className="w-1/2 text-white py-2 px-4 rounded-md bg-green-800 disabled:bg-gray-500 hover:bg-green-700" 
           onClick={() => saveRaceNumber(true)}
-          disabled={places.length === 0}
+          disabled={places.length === 0 || isFieldEmpty('number')}
         >
         Same Time
         </button>
@@ -48,6 +48,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
           type="button" 
           className="w-1/2 text-white py-2 px-4 rounded-md bg-green-600 disabled:bg-gray-500 hover:bg-green-700" 
           onClick={() => saveRaceNumber(false)}
+          disabled={isFieldEmpty('number')}
         >
         Record
         </button>

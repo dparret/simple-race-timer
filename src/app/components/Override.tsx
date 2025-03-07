@@ -1,5 +1,5 @@
 import React, { SetStateAction } from 'react';
-import { isRaceFieldPresent, isRaceFieldValid, place, settings } from '../utils';
+import { isFieldEmpty, isRaceFieldPresent, isRaceFieldValid, place, settings } from '../utils';
 
 interface NotesProps {
   places: place[],
@@ -57,6 +57,7 @@ const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverr
           updateRaceNumber();
           setIsOverrideOpen(false);
         }}
+        disabled={isFieldEmpty('number-to-override') || isFieldEmpty('number-updated')}
       >
       Override
     </button>
