@@ -23,7 +23,6 @@ const Timer: React.FC = () => {
   const [startTime, setStartTime] = useLocalStorage('SRT-startTime', DEFAULT_STARTTIME, { initializeWithValue: false });
   const [places, setPlaces] = useLocalStorage<place[]>('SRT-places', DEFAULT_PLACES, { initializeWithValue: false });
   const [settings, setSettings]= useLocalStorage<settings>('SRT-settings', {min: DEFAULT_SETTING_MIN, max: DEFAULT_SETTING_MAX}, { initializeWithValue: true });
-  const [notes, setNotes]= useLocalStorage<string>('SRT-notes', '', { initializeWithValue: true });
 
   // Get executed at the specified interval. Compute and set the time values.
   useEffect(() => {
@@ -51,7 +50,7 @@ const Timer: React.FC = () => {
       <main className="flex flex-col gap-8 row-start-2 items-center w-full">
         <ClockAndTimer elapsedTime={elapsedTime} clock={clock} isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen}/>
         {isSettingsOpen ?
-        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings} setNotes={setNotes} />
+        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings} />
         :
         <>
           <div className="flex flex-col gap-4 items-center w-full justify-items-center">
@@ -61,7 +60,7 @@ const Timer: React.FC = () => {
             <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} settings={settings}/>
             }
           </div>
-          <Results places={places} notes={notes} setNotes={setNotes}/>
+          <Results places={places} setPlaces={setPlaces} settings={settings}/>
         </>
         }
       </main>

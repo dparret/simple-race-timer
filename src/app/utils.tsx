@@ -32,4 +32,14 @@ export const isRaceFieldValid = (raceField: HTMLFormElement, places: place[], se
   }  
   // Otherwise it's valid.
   return true;
-}
+};
+
+export const isRaceFieldPresent = (raceField: HTMLFormElement, places: place[]) => {
+  const isPresent = places.map((p) => p.raceNumber).includes(raceField.value)
+  if (!isPresent){
+    alert("The race number can't be overridden");
+    return false;
+  } else {
+    return true
+  }
+};
