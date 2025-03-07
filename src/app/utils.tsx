@@ -20,13 +20,13 @@ export interface settings {
     max: number
   }
 
-export const isRaceFieldValid = (raceField: HTMLFormElement, places: place[], settings: settings) => {
+export const isRaceFieldValid = (raceField: number, places: place[], settings: settings) => {
   // Check for invalid race numbers
-  if (raceField.value < settings.min || raceField.value > settings.max) {
+  if (raceField < settings.min || raceField > settings.max) {
     alert("Race number not in the valid range!")
     return false
   }
-  if (places.map((p) => p.raceNumber).includes(raceField.value)) {
+  if (places.map((p) => p.raceNumber).includes(raceField)) {
     alert("Race number was saved already!")
     return false
   }  
@@ -34,8 +34,8 @@ export const isRaceFieldValid = (raceField: HTMLFormElement, places: place[], se
   return true;
 };
 
-export const isRaceFieldPresent = (raceField: HTMLFormElement, places: place[]) => {
-  const isPresent = places.map((p) => p.raceNumber).includes(raceField.value)
+export const isRaceFieldPresent = (raceField: number, places: place[]) => {
+  const isPresent = places.map((p) => p.raceNumber).includes(raceField)
   if (!isPresent){
     alert("The race number can't be overridden");
     return false;

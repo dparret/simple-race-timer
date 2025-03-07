@@ -22,7 +22,7 @@ const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings
 
   const saveRaceNumber = (withSameTime: boolean) => {
     const raceField = document.getElementById('number') as HTMLFormElement;
-    if (isRaceFieldValid(raceField, places, settings)) recordNumber(raceField, withSameTime);
+    if (isRaceFieldValid(raceField.value, places, settings)) recordNumber(raceField, withSameTime);
     raceField.value = ""
   }
 

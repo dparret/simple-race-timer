@@ -23,12 +23,15 @@ const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverr
   }
 
   const updateRaceNumber = () => {
-    if (isRaceFieldPresent(numberToOverride, places) && isRaceFieldValid(newRaceNumber, places, settings)) 
+    if (isRaceFieldPresent(numberToOverride.value, places) && isRaceFieldValid(newRaceNumber.value, places, settings)) {
       updateNumber(numberToOverride.value, newRaceNumber.value, places);
+      return true
+    }
 
     // Reset values
     numberToOverride.value = "";
     newRaceNumber.value = "";
+    return false;
   }
 
   return (
