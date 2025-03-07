@@ -1,5 +1,6 @@
 import React, { SetStateAction } from 'react';
 import { isFieldEmpty, isRaceFieldPresent, isRaceFieldValid, place, settings } from '../utils';
+import { XMarkIcon } from '@heroicons/react/16/solid';
 
 interface NotesProps {
   places: place[],
@@ -35,7 +36,7 @@ const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverr
   }
 
   return (
-  <div className="flex flex-row gap-4">
+  <div className="flex flex-col gap-2 w-full large:max-w-lg">
     <input 
       type="number"
       id="number-to-override"
@@ -50,17 +51,25 @@ const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverr
       className="grow text-white text-sm bg-gray-700 border border-gray-600 rounded-md focus:ring-blue-500 focus:border-blue-500 h-10 p-2.5 placeholder-gray-400"
       placeholder={`New race number`}
     />
-    <button 
-        type="button" 
-        className="w-1/2 text-white py-2 px-4 rounded-md bg-green-800 disabled:bg-gray-500 hover:bg-green-700" 
-        onClick={() => {
-          updateRaceNumber();
-          setIsOverrideOpen(false);
-        }}
-        disabled={isFieldEmpty('number-to-override') || isFieldEmpty('number-updated')}
+    <div className='flex flex-row gap-2 justify-end'>
+      <button 
+        className="w-10 h-10 rounded-md justify-items-center hover:bg-neutral-800"
+        onClick={() => setIsOverrideOpen(false)}
       >
-      Override
-    </button>
+        <XMarkIcon className="size-4 text-white" />
+      </button>
+      <button
+          type="button" 
+          className="w-1/2 text-white py-2 px-4 rounded-md bg-green-800 disabled:bg-gray-500 hover:bg-green-700" 
+          onClick={() => {
+            updateRaceNumber();
+            setIsOverrideOpen(false);
+          }}
+          disabled={isFieldEmpty('number-to-override') || isFieldEmpty('number-updated')}
+        >
+        Override
+      </button>
+    </div>
   </div>
   );
 }

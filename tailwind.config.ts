@@ -8,8 +8,8 @@ export default {
   ],
   theme: {
     screens: {
-      'small': {'min': '0px', 'max': '384px'},
-      'large': {'min': '385px'},
+      'small': {'min': '0px', 'max': '599px'},
+      'large': {'min': '600px'},
     },
     extend: {
       colors: {
