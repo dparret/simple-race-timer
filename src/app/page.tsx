@@ -8,14 +8,14 @@ import ClockAndTimer from './components/ClockAndTimer';
 import Record from './components/Record';
 import Results from './components/Results';
 import Start from './components/Start';
-import { DEFAULT_ELAPSED_TIME, DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_TIME, DEFAULT_PLACES, DEFAULT_STARTTIME } from './constants';
-import { formatClock, formatTimer, place, settings } from './utils';
+import { DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_TIME, DEFAULT_PLACES, DEFAULT_STARTTIME } from './constants';
+import { formatClock, hoursMinutesAndSecondsDurationToSeconds, place, settings } from './utils';
 import Settings from './components/Settings';
 
 const Timer: React.FC = () => {
   // States
   const [clock, setClock] = useState(DEFAULT_TIME);
-  const [elapsedTime, setElapsedTime] = useState(DEFAULT_ELAPSED_TIME);
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
  
@@ -34,7 +34,7 @@ const Timer: React.FC = () => {
       // Compute and set the elasped time
       if (startTime > 0) {
         const stopwatch = intervalToDuration({start: Number(startTime), end: Date.now()});
-        setElapsedTime(formatTimer(stopwatch.hours, stopwatch.minutes, stopwatch.seconds));
+        setElapsedSeconds(hoursMinutesAndSecondsDurationToSeconds(stopwatch));
       }
 
       setIsLoading(false);
@@ -48,16 +48,16 @@ const Timer: React.FC = () => {
     <div className="grid grid-rows-[20px_1fr_24px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       {!isLoading && 
       <main className="flex flex-col gap-8 row-start-2 items-center w-full">
-        <ClockAndTimer elapsedTime={elapsedTime} clock={clock} isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen}/>
+        <ClockAndTimer elapsedSeconds={elapsedSeconds} clock={clock} isSettingsOpen={isSettingsOpen} setIsSettingsOpen={setIsSettingsOpen}/>
         {isSettingsOpen ?
-        <Settings setStartTime={setStartTime} setElapsedTime={setElapsedTime} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings} />
+        <Settings setStartTime={setStartTime} setElapsedSeconds={setElapsedSeconds} setPlaces={setPlaces} setIsSettingsOpen={setIsSettingsOpen} settings={settings} setSettings={setSettings} />
         :
         <>
           <div className="flex flex-col gap-4 items-center w-full justify-items-center">
             {startTime === 0 ?
             <Start setStartTime={setStartTime} />
             :
-            <Record elapsedTime={elapsedTime} places={places} setPlaces={setPlaces} settings={settings}/>
+            <Record elapsedSeconds={elapsedSeconds} places={places} setPlaces={setPlaces} settings={settings}/>
             }
           </div>
           <Results places={places} setPlaces={setPlaces} settings={settings}/>

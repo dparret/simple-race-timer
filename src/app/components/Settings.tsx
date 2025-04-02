@@ -1,23 +1,23 @@
 import React, { SetStateAction } from 'react';
 import { place, settings } from '../utils';
-import { DEFAULT_ELAPSED_TIME, DEFAULT_PLACES, DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_STARTTIME } from '../constants';
+import { DEFAULT_PLACES, DEFAULT_SETTING_MAX, DEFAULT_SETTING_MIN, DEFAULT_STARTTIME } from '../constants';
 import { ArrowUturnLeftIcon } from '@heroicons/react/16/solid';
 
 interface SettingsProps {
   setStartTime: React.Dispatch<SetStateAction<number>>,
-  setElapsedTime: React.Dispatch<SetStateAction<string>>,
+  setElapsedSeconds: React.Dispatch<SetStateAction<number>>,
   setPlaces: React.Dispatch<SetStateAction<place[]>>,
   setIsSettingsOpen: React.Dispatch<SetStateAction<boolean>>,
   settings: settings,
   setSettings: React.Dispatch<SetStateAction<settings>>,
 }
 
-const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedTime, setPlaces, setIsSettingsOpen, settings, setSettings}) => {
+const Settings: React.FC<SettingsProps> = ({setStartTime, setElapsedSeconds, setPlaces, setIsSettingsOpen, settings, setSettings}) => {
   // To reset the stopwatch.
   const reset = () => {
     if (confirm("Clear all results and reset timer?")) {
       setStartTime(DEFAULT_STARTTIME);
-      setElapsedTime(DEFAULT_ELAPSED_TIME);
+      setElapsedSeconds(0);
       setPlaces(DEFAULT_PLACES);
       setIsSettingsOpen(false);
     }

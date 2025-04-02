@@ -2,18 +2,18 @@ import React, { SetStateAction } from 'react';
 import { isFieldEmpty, isRaceFieldValid, place, settings } from '../utils';
 
 interface RecordProps {
-    elapsedTime: string,
+    elapsedSeconds: number,
     places: place[],
     setPlaces: React.Dispatch<SetStateAction<place[]>>,
     settings: settings
 }
 
-const Record: React.FC<RecordProps> = ({elapsedTime, places, setPlaces, settings}) => {
+const Record: React.FC<RecordProps> = ({elapsedSeconds, places, setPlaces, settings}) => {
   // To record a new number and its time
   const recordNumber = (raceField: HTMLFormElement, withSameTime: boolean) => {
     const updatedPlaces = withSameTime
-      ? [...places, {position: places.length + 1, raceNumber: raceField.value, time: places[places.length - 1].time}]
-      : [...places, {position: places.length + 1, raceNumber: raceField.value, time: elapsedTime}]
+      ? [...places, {position: places.length + 1, raceNumber: raceField.value, timeInSeconds: places[places.length - 1].timeInSeconds}]
+      : [...places, {position: places.length + 1, raceNumber: raceField.value, timeInSeconds: elapsedSeconds}]
     
     // Save the places in local storage
     localStorage.places = JSON.stringify(updatedPlaces);

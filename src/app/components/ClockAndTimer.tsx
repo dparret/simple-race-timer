@@ -1,14 +1,15 @@
 import React, { SetStateAction } from 'react';
 import { ArrowUturnLeftIcon, Cog6ToothIcon } from '@heroicons/react/16/solid';
+import { formatTimerFromSeconds } from '../utils';
 
 interface ClockAndTimerProps {
     clock: string,
-    elapsedTime: string,
+    elapsedSeconds: number,
     isSettingsOpen: boolean,
     setIsSettingsOpen: React.Dispatch<SetStateAction<boolean>>
 }
 
-const ClockAndTimer: React.FC<ClockAndTimerProps> = ({clock, elapsedTime, isSettingsOpen, setIsSettingsOpen}) => 
+const ClockAndTimer: React.FC<ClockAndTimerProps> = ({clock, elapsedSeconds, isSettingsOpen, setIsSettingsOpen}) => 
   <div className="flex flex-col gap-4 items-center h-20">
     <>
       <div className='text-xl text-neutral-500 font-mono'>
@@ -19,7 +20,7 @@ const ClockAndTimer: React.FC<ClockAndTimerProps> = ({clock, elapsedTime, isSett
       <div className="flex flex-row gap-2">
         <div className="w-10 h-10"></div> {/* This is only to center the timer */}
         <div className='text-4xl font-mono'>
-          {elapsedTime}
+          {formatTimerFromSeconds(elapsedSeconds)}
         </div>
         { !isSettingsOpen ?
         <button 

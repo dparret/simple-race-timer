@@ -2,30 +2,28 @@ import React, { SetStateAction } from 'react';
 import { isFieldEmpty, isRaceFieldPresent, isRaceFieldValid, place, settings } from '../utils';
 import { XMarkIcon } from '@heroicons/react/16/solid';
 
-interface NotesProps {
+interface OverrideNumberProps {
   places: place[],
   setPlaces: React.Dispatch<SetStateAction<place[]>>,
   settings: settings,
   setIsOverrideOpen: React.Dispatch<SetStateAction<boolean>>,
 }
 
-const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverrideOpen}) => {
-  const numberToOverride = document.getElementById('number-to-override') as HTMLFormElement;
-  const newRaceNumber = document.getElementById('number-updated') as HTMLFormElement;
-
-  // To update a race number without changing its time nor position
-  const updateNumber = (numberToReplace: number, newNumber: number, places: place[]) => {
-    const updatedPlaces: place[] = places.map((place) => 
-      place.raceNumber === numberToReplace ? {...place, raceNumber: newNumber} : place)
-    
-    // Save the places in local storage
-    localStorage.places = JSON.stringify(updatedPlaces);
-    setPlaces(updatedPlaces);
-  }
-
+const OverrideNumber: React.FC<OverrideNumberProps> = ({places, setPlaces, settings, setIsOverrideOpen}) => {
   const updateRaceNumber = () => {
+    // Get values
+    const numberToOverride = document.getElementById('number-to-override') as HTMLFormElement;
+    const newRaceNumber = document.getElementById('number-updated') as HTMLFormElement;
+
     if (isRaceFieldPresent(numberToOverride.value, places) && isRaceFieldValid(newRaceNumber.value, places, settings)) {
-      updateNumber(numberToOverride.value, newRaceNumber.value, places);
+      // Update places
+      const updatedPlaces: place[] = places.map((place) => 
+        place.raceNumber === numberToOverride.value ? {...place, raceNumber: newRaceNumber.value} : place)
+      
+      // Save the places in local storage
+      localStorage.places = JSON.stringify(updatedPlaces);
+      setPlaces(updatedPlaces);
+
       return true
     }
 
@@ -74,4 +72,4 @@ const Override: React.FC<NotesProps> = ({places, setPlaces, settings, setIsOverr
   );
 }
 
-export default Override;
+export default OverrideNumber;

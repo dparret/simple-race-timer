@@ -1,26 +1,22 @@
 import { expect, test } from 'vitest'
-import { isRaceFieldPresent, isRaceFieldValid, place } from '../utils'
+import { isRaceFieldPresent, isRaceFieldValid, isTimeValid, place, timerFormatToSeconds } from '../utils'
 
 const places: place[] = [
     {
-        position: 1,
         raceNumber: 1,
-        time: "00:01"
+        timeInSeconds: 1
     },
     {
-        position: 2,
         raceNumber: 12,
-        time: "00:03"
+        timeInSeconds: 3
     },
     {
-        position: 3,
         raceNumber: 3,
-        time: "00:04"
+        timeInSeconds: 4
     },
     {
-        position: 4,
         raceNumber: 5,
-        time: "00:05"
+        timeInSeconds: 5
     }
 ]
  
@@ -44,7 +40,37 @@ test('isRaceFieldPresent', () => {
     expect(isRaceFieldPresent(12, places)).toBe(true)
     expect(isRaceFieldPresent(3, places)).toBe(true)
     expect(isRaceFieldPresent(5, places)).toBe(true)
+
     expect(isRaceFieldPresent(0, places)).toBe(false)
     expect(isRaceFieldPresent(2, places)).toBe(false)
     expect(isRaceFieldPresent(-2, places)).toBe(false)
+})
+
+test('isTimeValid', () => {
+    expect(isTimeValid('10:00')).toBe(true)
+    expect(isTimeValid('01:20')).toBe(true)
+    expect(isTimeValid('1:00:00')).toBe(true)
+    expect(isTimeValid('1:02:02')).toBe(true)
+    expect(isTimeValid('01:02:02')).toBe(true)
+    expect(isTimeValid('99:59:59')).toBe(true)
+
+    expect(isTimeValid('0')).toBe(false)
+    expect(isTimeValid('10')).toBe(false)
+    expect(isTimeValid('1:10')).toBe(false)
+    expect(isTimeValid('1:1')).toBe(false)
+    expect(isTimeValid('0:10')).toBe(false)
+    expect(isTimeValid('01:60')).toBe(false)
+    expect(isTimeValid('60:00')).toBe(false)
+    expect(isTimeValid('abc')).toBe(false)
+    expect(isTimeValid('01;00')).toBe(false)
+    expect(isTimeValid('100:00:00')).toBe(false)
+})
+
+test('timerFormatToSeconds', () => {
+    expect(timerFormatToSeconds('10:00')).toBe(600)
+    expect(timerFormatToSeconds('01:20')).toBe(80)
+    expect(timerFormatToSeconds('1:00:00')).toBe(3600)
+    expect(timerFormatToSeconds('1:02:02')).toBe(3722)
+    expect(timerFormatToSeconds('01:02:02')).toBe(3722)
+    expect(timerFormatToSeconds('99:59:59')).toBe(359999)
 })
