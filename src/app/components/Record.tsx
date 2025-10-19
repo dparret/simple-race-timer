@@ -56,4 +56,5 @@ const Record: React.FC<RecordProps> = ({elapsedSeconds, places, setPlaces, setti
     </div>
   );
 }
+
 export default Record;
